@@ -1,0 +1,10 @@
+{
+	"authors": [
+		"fence"
+	],
+    "targetType": "library",
+	"copyright": "Copyright © 2020, fence",
+	"description": "A minimal D application.",
+	"license": "MIT",
+	"name": "djrpc"
+}
