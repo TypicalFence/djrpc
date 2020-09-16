@@ -32,7 +32,13 @@ class JsonRpc2Request : JsonRpcRequest {
 
         JSONValue id = data["id"];
         string method = data["method"].str;
-        JSONValue params = data["params"];
+        JSONValue params;
+
+        if (("params" in data) != null) {
+            params = data["params"];
+        } else {
+            params = JSONValue(null);
+        }
 
         return new JsonRpc2Request(id, method, params);
     }
@@ -66,6 +72,12 @@ unittest {
     assert(req.getVersion() == JsonRpcVersion.V2_0);
     assert(req.getID().integer == 1);
     assert(req.getMethod() == "subtract");
+}
+
+// omit params 
+unittest {
+    string json = "{\"jsonrpc\": \"2.0\", \"method\": \"subtract\", \"id\": 1}";
+    assertNotThrown!MalformedRpcMessageException(JsonRpc2Request.parse(json));
 }
 
 // wrong version number
