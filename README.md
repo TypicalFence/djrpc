@@ -1,7 +1,7 @@
 # djrpc
 
-This a implementation of the (JSON-RPC)[https://www.jsonrpc.org/] spec, written in D.
-It is Trasport agnostic, there are alternative libraries but those asume TCP transport.
+This a implementation of the [JSON-RPC](https://www.jsonrpc.org/) spec, written in D.
+It is transport agnostic, there are alternative libraries but those assume TCP transport.
 
 # Goals
 - no dependencies
