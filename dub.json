@@ -4,7 +4,7 @@
 	],
     "targetType": "library",
 	"copyright": "Copyright © 2020, fence",
-	"description": "A minimal D application.",
+	"description": "JSON-RPC implementation",
 	"license": "MIT",
 	"name": "djrpc"
 }
