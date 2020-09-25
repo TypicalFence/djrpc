@@ -2,9 +2,12 @@
 	"authors": [
 		"fence"
 	],
-    "targetType": "library",
 	"copyright": "Copyright © 2020, fence",
+	"dependencies": {
+		"silly": "~>1.0.2"
+	},
 	"description": "JSON-RPC implementation",
 	"license": "MIT",
-	"name": "djrpc"
+	"name": "djrpc",
+	"targetType": "library"
 }

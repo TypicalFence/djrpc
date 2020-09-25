@@ -64,7 +64,7 @@ class JsonRpc2Request : JsonRpcRequest {
     }
 }
 
-// valid jsonrpc 2.0 request
+@("request valid jsonrpc")
 unittest {
     string json = "{\"jsonrpc\": \"2.0\", \"method\": \"subtract\", \"params\": [42, 23], \"id\": 1}";
     JsonRpc2Request req = cast(JsonRpc2Request) JsonRpc2Request.parse(json);
@@ -74,14 +74,14 @@ unittest {
     assert(req.getMethod() == "subtract");
 }
 
-// omit params 
+@("request omit params")
+@("valid jsonrpc 2.0 request")
 unittest {
     string json = "{\"jsonrpc\": \"2.0\", \"method\": \"subtract\", \"id\": 1}";
     assertNotThrown!MalformedRpcMessageException(JsonRpc2Request.parse(json));
 }
 
-// wrong version number
-// spec: A String specifying the version of the JSON-RPC protocol. MUST be exactly "2.0".
+@("request wrong version number")
 unittest {
     string json = "{\"jsonrpc\": \"1.0\", \"method\": \"subtract\", \"params\": [], \"id\": 1}";
     assertThrown!MalformedRpcMessageException(JsonRpc2Request.parse(json));
@@ -166,7 +166,7 @@ class JsonRpc2Response : JsonRpcResponse {
     }
 }
 
-// valid jsonrpc 2.0 response
+@("response valid jsonrpc 2.0")
 unittest {
     string json = "{\"jsonrpc\": \"2.0\", \"result\": 19, \"id\": 1}";
     JsonRpc2Response res = cast(JsonRpc2Response) JsonRpc2Response.parse(json);
@@ -178,7 +178,7 @@ unittest {
     assert(res.getResult.get().integer() == 19);
 }
 
-// valid jsonrpc 2.0 response with error
+@("response valid with error")
 unittest {
     string json = "{\"jsonrpc\": \"2.0\", \"error\": {\"code\": -32601, \"message\": \"Method not found\"}, \"id\": \"1\"}";
     JsonRpc2Response res = cast(JsonRpc2Response) JsonRpc2Response.parse(json);
